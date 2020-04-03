@@ -2,10 +2,8 @@
 {
     public enum BitfinexFrequency
     {
-        [StringValue("F0")]
-        Realtime = 10,
+        [StringValue("F0")] Realtime = 10,
 
-        [StringValue("F1")]
-        TwoSecDelay = 20
+        [StringValue("F1")] TwoSecDelay = 20
     }
 }

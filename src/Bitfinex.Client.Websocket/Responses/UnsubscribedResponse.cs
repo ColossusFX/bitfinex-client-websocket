@@ -18,12 +18,12 @@ namespace Bitfinex.Client.Websocket.Responses
         /// <summary>
         /// Unsubscription status
         /// </summary>
-        public string Status {get; set; }
+        public string Status { get; set; }
 
         /// <summary>
         /// True if unsubscription success
         /// </summary>
-        [JsonIgnore] 
+        [JsonIgnore]
         public bool IsUnsubscribed => Status == "OK";
 
 

@@ -30,10 +30,10 @@ namespace Bitfinex.Client.Websocket.Responses.Trades
         {
             return new Trade
             {
-                Id = (long)array[0],
-                Mts = BitfinexTime.ConvertToTime((long)array[1]),
-                Amount = (double)array[2],
-                Price = (double)array[3]
+                Id = (long) array[0],
+                Mts = BitfinexTime.ConvertToTime((long) array[1]),
+                Amount = (double) array[2],
+                Price = (double) array[3]
             };
         }
     }

@@ -45,7 +45,7 @@ namespace Bitfinex.Client.Websocket.Responses.Books
         public string Pair { get; set; }
 
 
-        internal static void Handle(JToken token, SubscribedResponse subscription, ConfigurationState config, 
+        internal static void Handle(JToken token, SubscribedResponse subscription, ConfigurationState config,
             Subject<Book> subject, Subject<Book[]> subjectSnapshot, Subject<ChecksumResponse> subjectChecksum)
         {
             var data = token[1];
@@ -58,13 +58,10 @@ namespace Bitfinex.Client.Websocket.Responses.Books
                     return;
                 }
             }
-            
-            if (data.Type != JTokenType.Array)
-            {
-                return; // heartbeat, ignore
-            }
 
-            if(data.First.Type == JTokenType.Array)
+            if (data.Type != JTokenType.Array) return; // heartbeat, ignore
+
+            if (data.First.Type == JTokenType.Array)
             {
                 // initial snapshot
                 Handle(token, data.ToObject<Book[]>(), subscription, config, subject, subjectSnapshot);
@@ -78,7 +75,8 @@ namespace Bitfinex.Client.Websocket.Responses.Books
             subject.OnNext(book);
         }
 
-        internal static void Handle(JToken token, Book[] books, SubscribedResponse subscription, ConfigurationState config, 
+        internal static void Handle(JToken token, Book[] books, SubscribedResponse subscription,
+            ConfigurationState config,
             Subject<Book> subject, Subject<Book[]> subjectSnapshot)
         {
             foreach (var book in books)

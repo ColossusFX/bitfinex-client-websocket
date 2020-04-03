@@ -8,13 +8,13 @@
         /// <inheritdoc />
         public ConfigurationState()
         {
-            
         }
 
         /// <summary>
         /// Select current features and create snapshot
         /// </summary>
-        public ConfigurationState(bool isDecimalAsStringEnabled, bool isTimeAsStringEnabled, bool isTimestampEnabled, bool isSequencingEnabled, bool isChecksumEnabled)
+        public ConfigurationState(bool isDecimalAsStringEnabled, bool isTimeAsStringEnabled, bool isTimestampEnabled,
+            bool isSequencingEnabled, bool isChecksumEnabled)
         {
             IsDecimalAsStringEnabled = isDecimalAsStringEnabled;
             IsTimeAsStringEnabled = isTimeAsStringEnabled;

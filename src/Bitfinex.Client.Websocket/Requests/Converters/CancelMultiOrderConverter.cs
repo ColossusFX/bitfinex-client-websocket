@@ -16,7 +16,7 @@ namespace Bitfinex.Client.Websocket.Requests.Converters
             writer.WriteStartArray();
             writer.WriteValue(0);
             writer.WriteValue("oc_multi");
-            writer.WriteValue((object)null);
+            writer.WriteValue((object) null);
 
             writer.WriteStartObject();
 
@@ -31,10 +31,7 @@ namespace Bitfinex.Client.Websocket.Requests.Converters
                 writer.WritePropertyName("id");
                 writer.WriteStartArray();
 
-                foreach (var id in request.Ids)
-                {
-                    writer.WriteValue(id);
-                }
+                foreach (var id in request.Ids) writer.WriteValue(id);
 
                 writer.WriteEndArray();
             }
@@ -44,10 +41,7 @@ namespace Bitfinex.Client.Websocket.Requests.Converters
                 writer.WritePropertyName("gid");
                 writer.WriteStartArray();
 
-                foreach (var id in request.Gids)
-                {
-                    writer.WriteValue(id);
-                }
+                foreach (var id in request.Gids) writer.WriteValue(id);
 
                 writer.WriteEndArray();
             }
@@ -59,7 +53,7 @@ namespace Bitfinex.Client.Websocket.Requests.Converters
 
                 foreach (var cidPair in request.CidPairs)
                 {
-                    if(cidPair == null)
+                    if (cidPair == null)
                         continue;
 
                     writer.WriteStartArray();
@@ -75,7 +69,8 @@ namespace Bitfinex.Client.Websocket.Requests.Converters
             writer.WriteEndArray();
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
+            JsonSerializer serializer)
         {
             throw new NotImplementedException();
         }

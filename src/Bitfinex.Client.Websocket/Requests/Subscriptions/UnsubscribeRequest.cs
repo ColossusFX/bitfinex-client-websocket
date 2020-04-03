@@ -6,7 +6,7 @@ namespace Bitfinex.Client.Websocket.Requests.Subscriptions
     /// Unsubscribe from the channel.
     /// You need to subscribe to 'SubscriptionStream' in order to get correct channel id.
     /// </summary>
-    public class UnsubscribeRequest: RequestBase
+    public class UnsubscribeRequest : RequestBase
     {
         /// <summary>
         /// Unsubscribe from the channel request.

@@ -32,7 +32,9 @@
         public static string ExtractPair(string symbol)
         {
             var formatted = FormatPair(symbol);
-            return !string.IsNullOrWhiteSpace(formatted) && formatted.Length > 6 ? formatted.Remove(0, 1) : string.Empty;
+            return !string.IsNullOrWhiteSpace(formatted) && formatted.Length > 6
+                ? formatted.Remove(0, 1)
+                : string.Empty;
         }
 
         /// <summary>
@@ -42,7 +44,9 @@
         public static string ExtractBaseSymbol(string pair)
         {
             var formatted = FormatPair(pair);
-            return !string.IsNullOrWhiteSpace(formatted) && formatted.Length > 5 ? formatted.Substring(0, 3) : string.Empty;
+            return !string.IsNullOrWhiteSpace(formatted) && formatted.Length > 5
+                ? formatted.Substring(0, 3)
+                : string.Empty;
         }
 
         /// <summary>
@@ -52,7 +56,9 @@
         public static string ExtractQuoteSymbol(string pair)
         {
             var formatted = FormatPair(pair);
-            return !string.IsNullOrWhiteSpace(formatted) && formatted.Length > 5 ? formatted.Substring(3, 3) : string.Empty;
+            return !string.IsNullOrWhiteSpace(formatted) && formatted.Length > 5
+                ? formatted.Substring(3, 3)
+                : string.Empty;
         }
 
         /// <summary>
@@ -62,7 +68,7 @@
         /// <returns></returns>
         public static string FormatPair(string pair)
         {
-            var safe = (pair ?? string.Empty);
+            var safe = pair ?? string.Empty;
             return safe
                 .Trim()
                 .Replace("/", string.Empty)

@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Bitfinex.Client.Websocket.Responses.Books
 {
-    class BookConverter : JsonConverter
+    internal class BookConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {
@@ -29,9 +29,9 @@ namespace Bitfinex.Client.Websocket.Responses.Books
         {
             return new Book
             {
-                Price = (double)array[0],
-                Count = (int)array[1],
-                Amount = (double)array[2],
+                Price = (double) array[0],
+                Count = (int) array[1],
+                Amount = (double) array[2],
             };
         }
     }

@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Bitfinex.Client.Websocket.Client
 {
-    internal class BitfinexChannelList :  Dictionary<int, Action<JToken, ConfigurationState>>
+    internal class BitfinexChannelList : Dictionary<int, Action<JToken, ConfigurationState>>
     {
     }
 }

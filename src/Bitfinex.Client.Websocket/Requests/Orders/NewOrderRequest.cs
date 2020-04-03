@@ -20,7 +20,6 @@ namespace Bitfinex.Client.Websocket.Requests.Orders
         /// </summary>
         public NewOrderRequest()
         {
-            
         }
 
         /// <summary>
@@ -30,7 +29,7 @@ namespace Bitfinex.Client.Websocket.Requests.Orders
         public NewOrderRequest(long gid, long cid, string symbol, OrderType type, double amount, double price)
         {
             BfxValidations.ValidateInput(cid, nameof(cid), 0);
-            BfxValidations.ValidateInput((int)type, nameof(type), 0);
+            BfxValidations.ValidateInput((int) type, nameof(type), 0);
             BfxValidations.ValidateInput(price, nameof(price), 0);
             BfxValidations.ValidateInput(symbol, nameof(symbol));
 
@@ -106,5 +105,10 @@ namespace Bitfinex.Client.Websocket.Requests.Orders
         /// Time-In-Force: datetime for automatic order cancellation (ie. 2020-01-01 10:45:23) )
         /// </summary>
         public DateTime? TimeInForce { get; set; }
+        
+        /// <summary>
+        /// The meta object allows you to pass along an affiliate code inside the object - example: meta: {aff_code: "AFF_CODE_HERE"}
+        /// </summary>
+        public Meta Meta { get; set; }
     }
 }

@@ -53,24 +53,23 @@ namespace Bitfinex.Client.Websocket.Responses.Fundings
         public string Symbol { get; set; }
 
 
-
-        internal static void Handle(JToken token, SubscribedResponse subscription, 
+        internal static void Handle(JToken token, SubscribedResponse subscription,
             ConfigurationState config, Subject<Funding> subject)
         {
             var firstPosition = token[1];
             if (firstPosition.Type == JTokenType.Array)
             {
                 // initial snapshot
-                Handle(token, firstPosition.ToObject<Funding[]>(),subscription, config, subject);
+                Handle(token, firstPosition.ToObject<Funding[]>(), subscription, config, subject);
                 return;
             }
 
             var fundingType = FundingType.Executed;
             if (firstPosition.Type == JTokenType.String)
             {
-                if ((string)firstPosition == "ftu")
+                if ((string) firstPosition == "ftu")
                     fundingType = FundingType.UpdateExecution;
-                else if ((string)firstPosition == "hb")
+                else if ((string) firstPosition == "hb")
                     return; // heartbeat, ignore
             }
 
@@ -89,7 +88,7 @@ namespace Bitfinex.Client.Websocket.Responses.Fundings
             subject.OnNext(funding);
         }
 
-        internal static void Handle(JToken token, Funding[] fundings, SubscribedResponse subscription, 
+        internal static void Handle(JToken token, Funding[] fundings, SubscribedResponse subscription,
             ConfigurationState config, Subject<Funding> subject)
         {
             var reversed = fundings.Reverse().ToArray(); // newest last
@@ -102,7 +101,5 @@ namespace Bitfinex.Client.Websocket.Responses.Fundings
                 subject.OnNext(funding);
             }
         }
-
     }
-    
 }

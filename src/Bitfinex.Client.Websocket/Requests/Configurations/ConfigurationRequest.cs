@@ -39,6 +39,6 @@ namespace Bitfinex.Client.Websocket.Requests.Configurations
         /// <summary>
         /// Flags - converted to integer
         /// </summary>
-        public int Flags => (int)SelectedFlags;
+        public int Flags => (int) SelectedFlags;
     }
 }

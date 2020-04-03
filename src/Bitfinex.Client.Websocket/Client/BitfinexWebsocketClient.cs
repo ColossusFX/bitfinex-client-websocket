@@ -21,7 +21,7 @@ namespace Bitfinex.Client.Websocket.Client
     /// </summary>
     public class BitfinexWebsocketClient : IDisposable
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger(); 
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private readonly IBitfinexCommunicator _communicator;
         private readonly IDisposable _messageReceivedSubscription;
@@ -108,12 +108,12 @@ namespace Bitfinex.Client.Websocket.Client
 
                 var flags = response.Flags.Value;
                 Configuration = new ConfigurationState(
-                    (flags & (int)ConfigurationFlag.DecimalAsString) > 0,
-                    (flags & (int)ConfigurationFlag.TimeAsString) > 0,
-                    (flags & (int)ConfigurationFlag.Timestamp) > 0,
-                    (flags & (int)ConfigurationFlag.Sequencing) > 0,
-                    (flags & (int)ConfigurationFlag.Checksum) > 0
-                    );
+                    (flags & (int) ConfigurationFlag.DecimalAsString) > 0,
+                    (flags & (int) ConfigurationFlag.TimeAsString) > 0,
+                    (flags & (int) ConfigurationFlag.Timestamp) > 0,
+                    (flags & (int) ConfigurationFlag.Sequencing) > 0,
+                    (flags & (int) ConfigurationFlag.Checksum) > 0
+                );
             }
             catch (Exception e)
             {
@@ -154,7 +154,7 @@ namespace Bitfinex.Client.Websocket.Client
                 return;
             }
 
-            var channelId = (int)parsed[0];
+            var channelId = (int) parsed[0];
 
             if (!_channelIdToHandler.ContainsKey(channelId))
             {

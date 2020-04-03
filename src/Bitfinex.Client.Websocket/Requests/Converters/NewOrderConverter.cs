@@ -31,11 +31,11 @@ namespace Bitfinex.Client.Websocket.Requests.Converters
             if (!(value is NewOrderRequest request))
                 throw new BitfinexBadInputException("Can't serialize new order request");
 
-            
+
             writer.WriteStartArray();
             writer.WriteValue(0);
             writer.WriteValue("on");
-            writer.WriteValue((object)null);
+            writer.WriteValue((object) null);
 
             writer.WriteStartObject();
 
@@ -84,7 +84,7 @@ namespace Bitfinex.Client.Websocket.Requests.Converters
             if (request.Flags.HasValue)
             {
                 writer.WritePropertyName("flags");
-                writer.WriteValue((int)request.Flags);
+                writer.WriteValue((int) request.Flags);
             }
 
             if (request.TimeInForce.HasValue)
@@ -97,7 +97,8 @@ namespace Bitfinex.Client.Websocket.Requests.Converters
             writer.WriteEndArray();
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
+            JsonSerializer serializer)
         {
             throw new NotImplementedException();
         }

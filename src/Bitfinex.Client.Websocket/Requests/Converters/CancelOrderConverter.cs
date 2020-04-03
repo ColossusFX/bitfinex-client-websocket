@@ -16,7 +16,7 @@ namespace Bitfinex.Client.Websocket.Requests.Converters
             writer.WriteStartArray();
             writer.WriteValue(0);
             writer.WriteValue("oc");
-            writer.WriteValue((object)null);
+            writer.WriteValue((object) null);
 
             writer.WriteStartObject();
 
@@ -39,7 +39,8 @@ namespace Bitfinex.Client.Websocket.Requests.Converters
             writer.WriteEndArray();
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
+            JsonSerializer serializer)
         {
             throw new NotImplementedException();
         }

@@ -20,7 +20,8 @@ namespace Bitfinex.Client.Websocket.Responses
         public string Pair { get; set; }
 
 
-        internal static void Handle(JToken token, SubscribedResponse subscription, ConfigurationState config, Subject<ChecksumResponse> subject)
+        internal static void Handle(JToken token, SubscribedResponse subscription, ConfigurationState config,
+            Subject<ChecksumResponse> subject)
         {
             var checksum = token[2].Value<int>();
             var response = new ChecksumResponse()

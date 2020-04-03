@@ -58,7 +58,7 @@ namespace Bitfinex.Client.Websocket.Responses.Trades
         public string Pair { get; set; }
 
 
-        internal static void Handle(JToken token, SubscribedResponse subscription, ConfigurationState config, 
+        internal static void Handle(JToken token, SubscribedResponse subscription, ConfigurationState config,
             Subject<Trade> subject, Subject<Trade[]> subjectSnapshot)
         {
             var firstPosition = token[1];
@@ -72,9 +72,9 @@ namespace Bitfinex.Client.Websocket.Responses.Trades
             var tradeType = TradeType.Executed;
             if (firstPosition.Type == JTokenType.String)
             {
-                if((string)firstPosition == "tu")
+                if ((string) firstPosition == "tu")
                     tradeType = TradeType.UpdateExecution;
-                else if((string)firstPosition == "hb")
+                else if ((string) firstPosition == "hb")
                     return; // heartbeat, ignore
             }
 
@@ -82,7 +82,7 @@ namespace Bitfinex.Client.Websocket.Responses.Trades
             if (data.Type != JTokenType.Array)
             {
                 // bad format, ignore
-                return; 
+                return;
             }
 
             var trade = data.ToObject<Trade>();
@@ -93,7 +93,8 @@ namespace Bitfinex.Client.Websocket.Responses.Trades
             subject.OnNext(trade);
         }
 
-        internal static void Handle(JToken token, Trade[] trades, SubscribedResponse subscription, ConfigurationState config, Subject<Trade[]> subject)
+        internal static void Handle(JToken token, Trade[] trades, SubscribedResponse subscription,
+            ConfigurationState config, Subject<Trade[]> subject)
         {
             var reversed = trades.Reverse().ToArray(); // newest last
             foreach (var trade in reversed)
@@ -103,6 +104,7 @@ namespace Bitfinex.Client.Websocket.Responses.Trades
                 trade.ChanId = subscription.ChanId;
                 SetGlobalData(trade, config, token);
             }
+
             subject.OnNext(reversed);
         }
     }

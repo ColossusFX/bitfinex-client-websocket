@@ -9,7 +9,7 @@ namespace Bitfinex.Client.Websocket.Responses.Orders
 {
     internal class OrderConverter : JsonConverter
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger(); 
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         public override bool CanConvert(Type objectType)
         {
@@ -34,33 +34,33 @@ namespace Bitfinex.Client.Websocket.Responses.Orders
         {
             return new Order
             {
-                Id = (long)array[0],
-                Gid = (long?)array[1],
-                Cid = (long)array[2],
-                Symbol = (string)array[3],
-                MtsCreate = BitfinexTime.ConvertToTime((long?)array[4]),
-                MtsUpdate = BitfinexTime.ConvertToTime((long?)array[5]),
-                Amount = (double?)array[6],
-                AmountOrig = (double?)array[7],
-                Type = ParseType((string)array[8]),
-                TypePrev = ParseType((string)array[9]),
-                MtsTiff = BitfinexTime.ConvertToTime((long?)array[10]),
+                Id = (long) array[0],
+                Gid = (long?) array[1],
+                Cid = (long) array[2],
+                Symbol = (string) array[3],
+                MtsCreate = BitfinexTime.ConvertToTime((long?) array[4]),
+                MtsUpdate = BitfinexTime.ConvertToTime((long?) array[5]),
+                Amount = (double?) array[6],
+                AmountOrig = (double?) array[7],
+                Type = ParseType((string) array[8]),
+                TypePrev = ParseType((string) array[9]),
+                MtsTiff = BitfinexTime.ConvertToTime((long?) array[10]),
                 // 11
-                Flags = (int?)array[12],
-                OrderStatus = ParseStatus((string)array[13]),
-                OrderStatusText = (string)array[13],
+                Flags = (int?) array[12],
+                OrderStatus = ParseStatus((string) array[13]),
+                OrderStatusText = (string) array[13],
                 // 14
                 // 15
-                Price = (double?)array[16],
-                PriceAvg = (double?)array[17],
-                PriceTrailing = (double?)array[18],
-                PriceAuxLimit = (double?)array[19],
+                Price = (double?) array[16],
+                PriceAvg = (double?) array[17],
+                PriceTrailing = (double?) array[18],
+                PriceAuxLimit = (double?) array[19],
                 // 20
                 // 21
                 // 22
-                Notify = (int?)array[23],
-                Hidden = (int?)array[24],
-                PlacedId = (long?)array[25],
+                Notify = (int?) array[23],
+                Hidden = (int?) array[24],
+                PlacedId = (long?) array[25],
             };
         }
 
@@ -101,8 +101,8 @@ namespace Bitfinex.Client.Websocket.Responses.Orders
                 case "partially filled":
                 case var s when s.Contains("partially filled"):
                     return OrderStatus.PartiallyFilled;
-
             }
+
             Log.Warn("Can't parse OrderStatus, input: " + safe);
             return OrderStatus.Undefined;
         }
@@ -151,6 +151,7 @@ namespace Bitfinex.Client.Websocket.Responses.Orders
                 case var s when s.StartsWith("exchange fok"):
                     return OrderType.ExchangeFok;
             }
+
             Log.Warn("Can't parse OrderType, input: " + safe);
             return OrderType.Undefined;
         }
@@ -184,6 +185,7 @@ namespace Bitfinex.Client.Websocket.Responses.Orders
                 case OrderType.ExchangeFok:
                     return "EXCHANGE FOK";
             }
+
             throw new BitfinexException("Not supported order type");
         }
     }

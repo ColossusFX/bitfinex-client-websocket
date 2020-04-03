@@ -5,7 +5,6 @@ namespace Bitfinex.Client.Websocket.Utils
 {
     public static class BitfinexAuthentication
     {
-
         public static long CreateAuthNonce(long? time = null)
         {
             var timeSafe = time ?? BitfinexTime.NowMs();
@@ -27,16 +26,13 @@ namespace Bitfinex.Client.Websocket.Utils
             {
                 var builder = new StringBuilder();
 
-                for (var i = 0; i < buff.Length; i++)
-                {
-                    builder.Append(buff[i].ToString("X2")); // hex format
-                }
+                for (var i = 0; i < buff.Length; i++) builder.Append(buff[i].ToString("X2")); // hex format
                 return builder.ToString();
             }
 
             using (var hmacsha256 = new HMACSHA384(secretBytes))
             {
-                byte[] hashmessage = hmacsha256.ComputeHash(keyBytes);
+                var hashmessage = hmacsha256.ComputeHash(keyBytes);
                 return ByteToString(hashmessage).ToLower();
             }
         }

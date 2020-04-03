@@ -91,7 +91,7 @@ namespace Bitfinex.Client.Websocket.Requests.Orders
 
             return new CancelMultiOrderRequest()
             {
-                 Gids = gids
+                Gids = gids
             };
         }
 
@@ -104,7 +104,7 @@ namespace Bitfinex.Client.Websocket.Requests.Orders
 
             return new CancelMultiOrderRequest()
             {
-                Gids = new []{gid}
+                Gids = new[] {gid}
             };
         }
 

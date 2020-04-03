@@ -10,14 +10,19 @@ namespace Bitfinex.Client.Websocket.Json
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            var substracted = ((DateTime)value).Subtract(BitfinexTime.UnixBase);
+            var substracted = ((DateTime) value).Subtract(BitfinexTime.UnixBase);
             writer.WriteRawValue(substracted.TotalMilliseconds.ToString(CultureInfo.InvariantCulture));
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
+            JsonSerializer serializer)
         {
-            if (reader.Value == null) { return null; }
-            return BitfinexTime.ConvertToTime((long)reader.Value);
+            if (reader.Value == null)
+            {
+                return null;
+            }
+
+            return BitfinexTime.ConvertToTime((long) reader.Value);
         }
     }
 }

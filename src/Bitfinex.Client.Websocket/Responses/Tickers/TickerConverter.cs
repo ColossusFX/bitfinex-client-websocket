@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Bitfinex.Client.Websocket.Responses.Tickers
 {
-    class TickerConverter : JsonConverter
+    internal class TickerConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {
@@ -35,16 +35,16 @@ namespace Bitfinex.Client.Websocket.Responses.Tickers
         {
             return new Ticker
             {
-                Bid = (double)array[0],
-                BidSize = (double)array[1],
-                Ask = (double)array[2],
-                AskSize = (double)array[3],
-                DailyChange = (double)array[4],
-                DailyChangePercent = (double)array[5],
-                LastPrice = (double)array[6],
-                Volume = (double)array[7],
-                High = (double)array[8],
-                Low = (double)array[9]
+                Bid = (double) array[0],
+                BidSize = (double) array[1],
+                Ask = (double) array[2],
+                AskSize = (double) array[3],
+                DailyChange = (double) array[4],
+                DailyChangePercent = (double) array[5],
+                LastPrice = (double) array[6],
+                Volume = (double) array[7],
+                High = (double) array[8],
+                Low = (double) array[9]
             };
         }
 

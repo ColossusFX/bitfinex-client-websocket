@@ -19,7 +19,7 @@ namespace Bitfinex.Client.Websocket.Utils
         public static long NowMs()
         {
             var subtracted = DateTime.UtcNow.Subtract(UnixBase);
-            return (long)subtracted.TotalMilliseconds;
+            return (long) subtracted.TotalMilliseconds;
         }
 
         /// <summary>

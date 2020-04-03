@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Bitfinex.Client.Websocket.Responses.Notifications
 {
-    class NotificationConverter : JsonConverter
+    internal class NotificationConverter : JsonConverter
     {
         private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 

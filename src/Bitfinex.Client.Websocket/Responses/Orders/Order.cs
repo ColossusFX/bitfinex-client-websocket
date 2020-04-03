@@ -15,7 +15,7 @@ namespace Bitfinex.Client.Websocket.Responses.Orders
     [JsonConverter(typeof(OrderConverter))]
     public class Order
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger(); 
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         /// <summary>
         /// Order ID

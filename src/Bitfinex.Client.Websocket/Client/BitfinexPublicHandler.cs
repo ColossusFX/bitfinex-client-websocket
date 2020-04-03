@@ -13,7 +13,7 @@ namespace Bitfinex.Client.Websocket.Client
 {
     internal class BitfinexPublicHandler
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger(); 
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         private readonly BitfinexClientStreams _streams;
         private readonly BitfinexChannelList _channelIdToHandler;
@@ -70,29 +70,32 @@ namespace Bitfinex.Client.Websocket.Client
             switch (response.Channel)
             {
                 case "ticker":
-                    _channelIdToHandler[channelId] = (data, config) => 
+                    _channelIdToHandler[channelId] = (data, config) =>
                         Ticker.Handle(data, response, config, _streams.TickerSubject);
                     break;
                 case "trades":
                     //if pair is null means that is funding
                     if (response.Pair == null)
                     {
-                        _channelIdToHandler[channelId] = (data, config) => 
+                        _channelIdToHandler[channelId] = (data, config) =>
                             Funding.Handle(data, response, config, _streams.FundingsSubject);
                     }
                     else
                     {
-                        _channelIdToHandler[channelId] = (data, config) => 
-                            Trade.Handle(data, response, config, _streams.TradesSubject, _streams.TradesSnapshotSubject);
+                        _channelIdToHandler[channelId] = (data, config) =>
+                            Trade.Handle(data, response, config, _streams.TradesSubject,
+                                _streams.TradesSnapshotSubject);
                     }
+
                     break;
                 case "candles":
-                    _channelIdToHandler[channelId] = (data, config) => 
+                    _channelIdToHandler[channelId] = (data, config) =>
                         Candles.Handle(data, response, _streams.CandlesSubject);
                     break;
                 case "book":
-                    _channelIdToHandler[channelId] = (data, config) => 
-                        Book.Handle(data, response, config, _streams.BookSubject, _streams.BookSnapshotSubject, _streams.BookChecksumSubject);
+                    _channelIdToHandler[channelId] = (data, config) =>
+                        Book.Handle(data, response, config, _streams.BookSubject, _streams.BookSnapshotSubject,
+                            _streams.BookChecksumSubject);
                     break;
                 case "status":
                     if (response.Key.StartsWith("deriv"))
@@ -113,6 +116,5 @@ namespace Bitfinex.Client.Websocket.Client
                 //    break;
             }
         }
-
     }
 }

@@ -14,7 +14,7 @@ namespace Bitfinex.Client.Websocket.Responses.Wallets
     [JsonConverter(typeof(WalletConverter))]
     public class Wallet
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger(); 
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         /// <summary>
         /// Wallet name (exchange, margin, funding)
@@ -42,7 +42,7 @@ namespace Bitfinex.Client.Websocket.Responses.Wallets
         /// </summary>
         public double? BalanceAvailable { get; set; }
 
-        
+
         internal static void Handle(JToken token, Subject<Wallet> subject, Subject<Wallet[]> subjectMultiple)
         {
             var data = token[2];

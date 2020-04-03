@@ -32,11 +32,11 @@ namespace Bitfinex.Client.Websocket.Responses.Fundings
         {
             return new Funding
             {
-                Id = (long)array[0],
-                Mts = BitfinexTime.ConvertToTime((long)array[1]),
-                Amount = (double)array[2],
-                Rate = (double)array[3],
-                Period = (int)array[4]
+                Id = (long) array[0],
+                Mts = BitfinexTime.ConvertToTime((long) array[1]),
+                Amount = (double) array[2],
+                Rate = (double) array[3],
+                Period = (int) array[4]
             };
         }
     }

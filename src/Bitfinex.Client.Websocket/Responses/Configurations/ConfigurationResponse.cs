@@ -23,7 +23,7 @@ namespace Bitfinex.Client.Websocket.Responses.Configurations
         /// <summary>
         /// True if configuration happened successfully
         /// </summary>
-        [JsonIgnore] 
+        [JsonIgnore]
         public bool IsConfigured => Status == "OK" && Flags.HasValue;
 
 

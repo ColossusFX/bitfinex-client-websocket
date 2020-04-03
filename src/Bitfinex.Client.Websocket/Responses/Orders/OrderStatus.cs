@@ -48,7 +48,7 @@
         /// <summary>
         /// Order was canceled because of insufficient funds
         /// </summary>
-        InsufficientBalance, 
+        InsufficientBalance,
 
         /// <summary>
         /// Order was canceled because of insufficient margin

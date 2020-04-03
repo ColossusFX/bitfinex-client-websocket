@@ -50,10 +50,7 @@ namespace Bitfinex.Client.Websocket.Responses.Margin
             }
 
             var parsed = data.ToObject<MarginInfo>();
-            if (parsed != null)
-            {
-                subject.OnNext(parsed);
-            }
+            if (parsed != null) subject.OnNext(parsed);
         }
 
         private static string L(string msg)

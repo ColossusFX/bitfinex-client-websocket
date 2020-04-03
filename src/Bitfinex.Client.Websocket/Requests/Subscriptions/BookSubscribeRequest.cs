@@ -3,12 +3,12 @@ using Bitfinex.Client.Websocket.Validations;
 
 namespace Bitfinex.Client.Websocket.Requests.Subscriptions
 {
-    public class BookSubscribeRequest: SubscribeRequestBase
+    public class BookSubscribeRequest : SubscribeRequestBase
     {
         public BookSubscribeRequest(
-            string pair, 
-            BitfinexPrecision precision = BitfinexPrecision.P0, 
-            BitfinexFrequency frequency = BitfinexFrequency.Realtime, 
+            string pair,
+            BitfinexPrecision precision = BitfinexPrecision.P0,
+            BitfinexFrequency frequency = BitfinexFrequency.Realtime,
             string length = null)
         {
             BfxValidations.ValidateInput(pair, nameof(pair));
@@ -38,6 +38,5 @@ namespace Bitfinex.Client.Websocket.Requests.Subscriptions
         /// Number of price points ("25", "100") [default="25"]
         /// </summary>
         public string Len { get; set; }
-       
     }
 }

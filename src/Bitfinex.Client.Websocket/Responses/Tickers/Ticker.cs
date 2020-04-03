@@ -68,7 +68,8 @@ namespace Bitfinex.Client.Websocket.Responses.Tickers
         public string Pair { get; set; }
 
 
-        internal static void Handle(JToken token, SubscribedResponse subscription, ConfigurationState config, Subject<Ticker> subject)
+        internal static void Handle(JToken token, SubscribedResponse subscription, ConfigurationState config,
+            Subject<Ticker> subject)
         {
             var data = token[1];
 

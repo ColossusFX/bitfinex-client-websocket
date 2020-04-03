@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Bitfinex.Client.Websocket.Responses.Status
 {
-    class DerivativePairStatusConverter : JsonConverter
+    internal class DerivativePairStatusConverter : JsonConverter
     {
         public override bool CanWrite => false;
 

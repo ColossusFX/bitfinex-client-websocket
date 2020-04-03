@@ -7,7 +7,7 @@ namespace Bitfinex.Client.Websocket.Responses.Positions
 {
     internal class PositionConverter : JsonConverter
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger(); 
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         public override bool CanConvert(Type objectType)
         {
@@ -32,15 +32,15 @@ namespace Bitfinex.Client.Websocket.Responses.Positions
         {
             return new Position
             {
-                Symbol = (string)array[0],
-                Status = ParseStatus((string)array[1]),
-                Amount = (double)array[2],
-                BasePrice = (double)array[3],
-                MarginFunding = (double)array[4],
-                MarginFundingType = ParseFundingType((int?)array[5]),
-                ProfitLoss = (double?)array[6],
-                ProfitLossPercentage = (double?)array[7],
-                LiquidationPrice = (double?)array[8]
+                Symbol = (string) array[0],
+                Status = ParseStatus((string) array[1]),
+                Amount = (double) array[2],
+                BasePrice = (double) array[3],
+                MarginFunding = (double) array[4],
+                MarginFundingType = ParseFundingType((int?) array[5]),
+                ProfitLoss = (double?) array[6],
+                ProfitLossPercentage = (double?) array[7],
+                LiquidationPrice = (double?) array[8]
             };
         }
 
@@ -58,6 +58,7 @@ namespace Bitfinex.Client.Websocket.Responses.Positions
                 case var s when s.Contains("closed"):
                     return PositionStatus.Closed;
             }
+
             Log.Warn("Can't parse PositionStatus, input: " + safe);
             return PositionStatus.Undefined;
         }
@@ -73,6 +74,7 @@ namespace Bitfinex.Client.Websocket.Responses.Positions
                 case 1:
                     return MarginFundingType.Term;
             }
+
             Log.Warn("Can't parse MarginFundingType, input: " + type);
             return MarginFundingType.Undefined;
         }

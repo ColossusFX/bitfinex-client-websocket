@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Bitfinex.Client.Websocket.Responses.Candles
 {
-    class CandlesConverter : JsonConverter
+    internal class CandlesConverter : JsonConverter
     {
         public override bool CanWrite => false;
 
@@ -15,7 +15,8 @@ namespace Bitfinex.Client.Websocket.Responses.Candles
             throw new NotImplementedException();
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
+            JsonSerializer serializer)
         {
             return JArrayToCandles(JArray.Load(reader));
         }
@@ -30,16 +31,11 @@ namespace Bitfinex.Client.Websocket.Responses.Candles
             var candles = new Candles();
             var candleList = new List<Candle>();
 
-            if (jArray.Count==6)
-            {
+            if (jArray.Count == 6)
                 candleList.Add(JArrayToCandle(jArray));
-            }
             else
             {
-                foreach (var candle in jArray)
-                {
-                    candleList.Add(JArrayToCandle(candle));
-                }
+                foreach (var candle in jArray) candleList.Add(JArrayToCandle(candle));
             }
 
             candles.CandleList = candleList.ToArray();
@@ -50,7 +46,7 @@ namespace Bitfinex.Client.Websocket.Responses.Candles
         {
             return new Candle
             {
-                Mts = BitfinexTime.ConvertToTime((long)jToken[0]),
+                Mts = BitfinexTime.ConvertToTime((long) jToken[0]),
                 Open = (double) jToken[1],
                 Close = (double) jToken[2],
                 High = (double) jToken[3],

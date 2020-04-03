@@ -67,7 +67,5 @@ namespace Bitfinex.Client.Websocket.Requests
         /// Dead-Man-Switch flag (optional, value 4), when socket is closed, cancel all account orders
         /// </summary>
         public int? Dms { get; }
-
-        
     }
 }

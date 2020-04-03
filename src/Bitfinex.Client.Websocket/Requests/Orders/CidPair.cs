@@ -8,6 +8,10 @@ namespace Bitfinex.Client.Websocket.Requests.Orders
     /// </summary>
     public class CidPair
     {
+        public CidPair()
+        {
+            
+        }
         /// <summary>
         /// Create a new unique order identification
         /// </summary>
@@ -29,5 +33,14 @@ namespace Bitfinex.Client.Websocket.Requests.Orders
         /// Order creation date to make Cid unique
         /// </summary>
         public DateTime CidDate { get; }
+
+        /// <summary>
+        /// Generate Cid from Unix Ms.
+        /// </summary>
+        /// <returns></returns>
+        public static long GenerateCid()
+        {
+            return DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+        }
     }
 }

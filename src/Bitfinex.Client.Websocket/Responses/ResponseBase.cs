@@ -11,7 +11,7 @@ namespace Bitfinex.Client.Websocket.Responses
     /// </summary>
     public class ResponseBase
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger(); 
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         /// <summary>
         /// Unique channel id for this type of response.
@@ -39,7 +39,8 @@ namespace Bitfinex.Client.Websocket.Responses
         /// <summary>
         /// Sets global data (timestamp, sequence) if it is enabled by configuration.
         /// </summary>
-        internal static void SetGlobalData(ResponseBase response, ConfigurationState config, JToken data, int lastPosition = 1, bool isPrivateChannel = false)
+        internal static void SetGlobalData(ResponseBase response, ConfigurationState config, JToken data,
+            int lastPosition = 1, bool isPrivateChannel = false)
         {
             try
             {

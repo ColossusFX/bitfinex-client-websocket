@@ -16,10 +16,7 @@ namespace Bitfinex.Client.Websocket.Responses.Margin
         {
             var array = JArray.Load(reader);
 
-            if ((string) array[0] == "base")
-            {
-                return JArrayToMarginInfo(array[1] as JArray);
-            }
+            if ((string) array[0] == "base") return JArrayToMarginInfo(array[1] as JArray);
 
             return null;
         }

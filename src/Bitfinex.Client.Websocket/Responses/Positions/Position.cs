@@ -15,7 +15,7 @@ namespace Bitfinex.Client.Websocket.Responses.Positions
     [JsonConverter(typeof(PositionConverter))]
     public class Position : ResponseBase
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger(); 
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         /// <summary>
         /// Pair (tBTCUSD, etc). 
@@ -81,7 +81,6 @@ namespace Bitfinex.Client.Websocket.Responses.Positions
         public string QuoteSymbol => BitfinexSymbolUtils.ExtractQuoteSymbol(Pair);
 
 
-
         internal static void Handle(JToken token, ConfigurationState config, Subject<Position[]> subject)
         {
             var data = token[2];
@@ -92,10 +91,7 @@ namespace Bitfinex.Client.Websocket.Responses.Positions
             }
 
             var parsed = data.ToObject<Position[]>();
-            foreach (var position in parsed)
-            {
-                SetGlobalData(position, config, token, 2, true);
-            }
+            foreach (var position in parsed) SetGlobalData(position, config, token, 2, true);
             subject.OnNext(parsed);
         }
 

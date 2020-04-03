@@ -9,7 +9,7 @@ namespace Bitfinex.Client.Websocket.Websockets
     public class BitfinexWebsocketCommunicator : WebsocketClient, IBitfinexCommunicator
     {
         /// <inheritdoc />
-        public BitfinexWebsocketCommunicator(Uri url, Func<ClientWebSocket> clientFactory = null) 
+        public BitfinexWebsocketCommunicator(Uri url, Func<ClientWebSocket> clientFactory = null)
             : base(url, clientFactory)
         {
         }

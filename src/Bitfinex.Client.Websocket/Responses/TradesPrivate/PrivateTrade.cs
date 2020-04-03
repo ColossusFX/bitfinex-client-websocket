@@ -16,7 +16,7 @@ namespace Bitfinex.Client.Websocket.Responses.TradesPrivate
     [JsonConverter(typeof(PrivateTradeConverter))]
     public class PrivateTrade : ResponseBase
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger(); 
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
 
         /// <summary>
         /// Trade id
@@ -86,7 +86,8 @@ namespace Bitfinex.Client.Websocket.Responses.TradesPrivate
         public string Pair => BitfinexSymbolUtils.ExtractPair(Symbol);
 
 
-        internal static void Handle(JToken token, ConfigurationState config, Subject<PrivateTrade> subject, TradeType type)
+        internal static void Handle(JToken token, ConfigurationState config, Subject<PrivateTrade> subject,
+            TradeType type)
         {
             var data = token[2];
             if (data.Type != JTokenType.Array)

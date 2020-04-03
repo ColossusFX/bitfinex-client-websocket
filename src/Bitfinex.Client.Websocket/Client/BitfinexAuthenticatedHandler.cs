@@ -15,7 +15,7 @@ namespace Bitfinex.Client.Websocket.Client
 {
     internal class BitfinexAuthenticatedHandler
     {
-        private static readonly ILog Log = LogProvider.GetCurrentClassLogger(); 
+        private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
         private readonly BitfinexClientStreams _streams;
 
         public BitfinexAuthenticatedHandler(BitfinexClientStreams streams, BitfinexChannelList channelIdToHandler)
@@ -45,7 +45,8 @@ namespace Bitfinex.Client.Websocket.Client
                 Log.Warn(L("Invalid message format, second param is not string"));
                 return;
             }
-            var msgType = (string)secondItem;
+
+            var msgType = (string) secondItem;
             if (msgType == "hb")
             {
                 // heartbeat, ignore

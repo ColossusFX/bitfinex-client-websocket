@@ -31,17 +31,17 @@ namespace Bitfinex.Client.Websocket.Responses.TradesPrivate
         {
             return new PrivateTrade
             {
-                Id = (long)array[0],
-                Symbol = (string)array[1],
-                MtsCreate = BitfinexTime.ConvertToTime((long)array[2]),
-                OrderId = (long)array[3],
-                ExecAmount = (double)array[4],
-                ExecPrice = (double)array[5],
-                OrderType = OrderConverter.ParseType((string)array[6]),
-                OrderPrice = (double)array[7],
-                IsMaker = (int)array[8] > 0,
-                Fee = (double?)array[9],
-                FeeCurrency = (string)array[10]
+                Id = (long) array[0],
+                Symbol = (string) array[1],
+                MtsCreate = BitfinexTime.ConvertToTime((long) array[2]),
+                OrderId = (long) array[3],
+                ExecAmount = (double) array[4],
+                ExecPrice = (double) array[5],
+                OrderType = OrderConverter.ParseType((string) array[6]),
+                OrderPrice = (double) array[7],
+                IsMaker = (int) array[8] > 0,
+                Fee = (double?) array[9],
+                FeeCurrency = (string) array[10]
             };
         }
     }
