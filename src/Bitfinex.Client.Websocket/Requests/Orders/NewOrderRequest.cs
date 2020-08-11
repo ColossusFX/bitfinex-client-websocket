@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Bitfinex.Client.Websocket.Requests.Converters;
 using Bitfinex.Client.Websocket.Responses.Orders;
 using Bitfinex.Client.Websocket.Validations;
@@ -24,7 +25,7 @@ namespace Bitfinex.Client.Websocket.Requests.Orders
 
         /// <summary>
         /// Simple constructor mostly for LIMIT and MARKET order,
-        /// for other order types use parameter-less constructor and set properties by your own 
+        /// for other order types use parameter-less constructor and set properties by your own
         /// </summary>
         public NewOrderRequest(long gid, long cid, string symbol, OrderType type, double amount, double price)
         {
@@ -95,7 +96,7 @@ namespace Bitfinex.Client.Websocket.Requests.Orders
         public double? PriceOcoStop { get; set; }
 
         /// <summary>
-        /// Additional order configuration, see OrderFlag enum. 
+        /// Additional order configuration, see OrderFlag enum.
         /// You may sum flag values to pass multiple flags. For example passing 4160 (64 + 4096) means hidden post only.
         /// Use C# [Flags] to do that: Flags = OrderFlag.Hidden | OrderFlag.PostOnly
         /// </summary>
@@ -105,10 +106,10 @@ namespace Bitfinex.Client.Websocket.Requests.Orders
         /// Time-In-Force: datetime for automatic order cancellation (ie. 2020-01-01 10:45:23) )
         /// </summary>
         public DateTime? TimeInForce { get; set; }
-        
+
         /// <summary>
-        /// The meta object allows you to pass along an affiliate code inside the object - example: meta: {aff_code: "AFF_CODE_HERE"}
+        /// Additional parameters
         /// </summary>
-        public Meta Meta { get; set; }
+        public Dictionary<string, object> Meta { get; set; }
     }
 }

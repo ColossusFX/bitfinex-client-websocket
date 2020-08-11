@@ -2,7 +2,7 @@
 # Bitfinex & Ethfinex websocket API client 
 [![Build Status](https://travis-ci.org/Marfusios/bitfinex-client-websocket.svg?branch=master)](https://travis-ci.org/Marfusios/bitfinex-client-websocket) [![NuGet version](https://badge.fury.io/nu/Bitfinex.Client.Websocket.svg)](https://badge.fury.io/nu/Bitfinex.Client.Websocket) [![NuGet downloads](https://img.shields.io/nuget/dt/Bitfinex.Client.Websocket)](https://www.nuget.org/packages/Bitfinex.Client.Websocket)
 
-This is a C# implementation of the Bitfinex & Ethfinex websocket API version 2.0 (BETA) found here:
+This is a C# implementation of the Bitfinex & Ethfinex websocket API version 2.0 found here:
 
 https://bitfinex.readme.io/v2/docs ([Ethfinex](https://www.ethfinex.com/api_docs))
 
@@ -73,7 +73,9 @@ More usage examples:
 | Trades                 |  ✔            |
 | Trades - funding       |  ✔            |
 | Books                  |  ✔            |
-| Raw books              |                |
+| Books - funding        |  ✔            |
+| Raw books              |  ✔            |
+| Raw books - funding    |  ✔            |
 | Candles                |  ✔            |
 | Funding                |  ✔            |
 | Sequencing             |  ✔            |
@@ -137,6 +139,35 @@ More usage examples:
 
 </tr>
 </table>
+
+### Placing orders
+
+Bitfinex supports input authenticated API via websockets. 
+You are able to place, update, cancel orders. Also via multi batch. 
+Usage: 
+
+```csharp
+// placing buy
+client.Send(new NewOrderRequest(gid: 33, cid: 100, "ETH/USD", OrderType.Limit, 0.2, 163) {Flags = OrderFlag.PostOnly});
+
+// palcing sell
+client.Send(new NewOrderRequest(gid: 33, cid: 200, "ETH/USD", OrderType.Limit, -0.2, 188) { Flags = OrderFlag.PostOnly });
+
+// updating by client id
+client.Send(new UpdateOrderRequest(new CidPair(100, DateTime.UtcNow)) { Amount = 0.3, Price = 161});
+
+// canceling by client id
+client.Send(new CancelOrderRequest(new CidPair(100, DateTime.UtcNow)));
+
+// other canceling options
+client.Send(CancelMultiOrderRequest.CancelEverything());
+client.Send(CancelMultiOrderRequest.CancelGroup(33));
+client.Send(new CancelMultiOrderRequest(new[]
+{
+    new CidPair(100, DateTime.UtcNow),
+    new CidPair(200, DateTime.UtcNow)
+}));
+```
 
 ### Reconnecting
 
